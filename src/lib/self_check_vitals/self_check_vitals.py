@@ -29,4 +29,4 @@ class SelfCheckVitals:
     async def pacemake(self):
         while True:
             await self.send_discord_webhook()
-            await sleep(3)
+            await sleep(1800)
