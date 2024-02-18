@@ -29,4 +29,5 @@ class SelfCheckVitals:
     async def pacemake(self):
         while True:
             await self.send_discord_webhook()
+            print('Self Check Vitals: I am alive at', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
             await sleep(1800)

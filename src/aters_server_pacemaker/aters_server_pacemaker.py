@@ -9,7 +9,7 @@ class AtersServerPacemaker:
     async def get_aters(self):
         try:
             response = await self.Session.get('https://aters-server.onrender.com/')
-            print(await response.text())
+            print("AtersServer Response: ", await response.text())
             await self.send_discord_webhook()
             response.close()
         except Exception as e:

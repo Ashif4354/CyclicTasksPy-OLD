@@ -1,4 +1,3 @@
-from src import main
 from flask import Flask, jsonify
 from flask_cors import CORS
 
@@ -9,4 +8,6 @@ CORS(app)
 def index():
     return jsonify({'message': 'Cyclic Tasks is running...'})
 
+
+from src import main
         
