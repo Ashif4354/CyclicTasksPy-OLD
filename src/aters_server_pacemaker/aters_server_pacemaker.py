@@ -1,6 +1,7 @@
 from asyncio import sleep
 from os import getenv
-from datetime import datetime
+
+from ..lib.GetIstTime import get_ist_time
 
 class AtersServerPacemaker:
     def __init__(self, Session):
@@ -26,7 +27,7 @@ class AtersServerPacemaker:
             'embeds': [
                 {
                     'title': 'Aters Server Pacemaker',
-                    'description': f'Made sure server stays alive by sending one pulse at : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
+                    'description': f'Made sure server stays alive by sending one pulse at : {get_ist_time()}',
                     'color': 0x0066ff
                 }
             ]

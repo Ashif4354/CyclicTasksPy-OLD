@@ -3,6 +3,8 @@ from webbrowser import get
 from datetime import datetime
 from asyncio import sleep
 
+from ..lib.GetIstTime import get_ist_time
+
 class SelfCheckVitals:
     def __init__(self, Session):
         self.Session = Session
@@ -18,7 +20,7 @@ class SelfCheckVitals:
             'embeds': [
                 {
                     'title': 'Self Check Vitals',
-                    'description': f'I am alive at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
+                    'description': f'I am alive at {get_ist_time()}',
                     'color': 0xffffff
                 }
             ]
@@ -29,5 +31,5 @@ class SelfCheckVitals:
     async def pacemake(self):
         while True:
             await self.send_discord_webhook()
-            print('Self Check Vitals: I am alive at', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+            print('Self Check Vitals: I am alive at', get_ist_time())
             await sleep(1800)

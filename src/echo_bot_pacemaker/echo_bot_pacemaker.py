@@ -1,8 +1,7 @@
-from datetime import datetime
 from os import getenv
 from asyncio import sleep
 
-
+from ..lib.GetIstTime import get_ist_time
 
 class EchoBotPacemaker:
     def __init__(self, Session):
@@ -29,7 +28,7 @@ class EchoBotPacemaker:
             'embeds': [
                 {
                     'title': 'Echo Bot Pacemaker',
-                    'description': f'Made sure EchoBot stays alive by sending one pulse at : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
+                    'description': f'Made sure EchoBot stays alive by sending one pulse at : {get_ist_time()}',
                     'color': 0x14e34b
                 }
             ]
