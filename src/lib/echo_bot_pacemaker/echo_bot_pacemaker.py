@@ -1,20 +1,23 @@
-from asyncio import sleep
-from os import getenv
 from datetime import datetime
+from os import getenv
+from asyncio import sleep
 
-class AtersServerPacemaker:
+
+
+class EchoBotPacemaker:
     def __init__(self, Session):
         self.Session = Session
 
-    async def get_aters(self):
+    async def get_echo_bot(self):
         try:
-            response = await self.Session.get('https://aters-server.onrender.com/')
+            response = await self.Session.get('https://echo-bot-kl81.onrender.com?url=https://aters-server.onrender.com')
             print(await response.text())
             await self.send_discord_webhook()
             response.close()
         except Exception as e:
-            print('Failed to get aters server', e) 
-    
+            print('Failed to get echo bot', e)
+
+
     async def send_discord_webhook(self):
         url = getenv('DISCORD_WEBHOOK_URL_CYCLIC_TASKS_PY')
 
@@ -25,9 +28,9 @@ class AtersServerPacemaker:
         data = {
             'embeds': [
                 {
-                    'title': 'Aters Server Pacemaker',
-                    'description': f'Made sure server stays alive by sending one pulse at : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
-                    'color': 0x0066ff
+                    'title': 'Echo Bot Pacemaker',
+                    'description': f'Made sure EchoBot stays alive by sending one pulse at : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
+                    'color': 0x14e34b
                 }
             ]
         }
@@ -35,10 +38,10 @@ class AtersServerPacemaker:
         try:
             await self.Session.post(url, json=data, headers=headers)
         except Exception as e:
-            print('Failed to send discord webhook in AtersServerPacemaker\n', e)
+            print('Failed to send discord webhook in EchoBotPacemaker\n', e)
 
+    
     async def pacemake(self):
         while True:
-            await self.get_aters()
+            await self.get_echo_bot()
             await sleep(60)
-    
