@@ -1,8 +1,9 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from asyncio import create_task, gather, run
+from asyncio import create_task, gather, run, new_event_loop, set_event_loop
 from aiohttp import ClientSession
+from threading import Thread
 
 from .aters_server_pacemaker.aters_server_pacemaker import AtersServerPacemaker
 from .self_check_vitals.self_check_vitals import SelfCheckVitals
@@ -38,5 +39,12 @@ async def main():
         await CT.start()
 
 
-run(main())
+# run(main())
 
+def run_main_in_thread():
+    loop = new_event_loop()
+    set_event_loop(loop)
+    loop.run_until_complete(main())
+
+thread = Thread(target=run_main_in_thread)
+thread.start()
