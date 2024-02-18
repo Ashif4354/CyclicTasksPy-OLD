@@ -18,7 +18,7 @@ class SelfCheckVitals:
             'embeds': [
                 {
                     'title': 'Self Check Vitals',
-                    'description': f'Iam alive at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
+                    'description': f'I am alive at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
                     'color': 0xffffff
                 }
             ]
