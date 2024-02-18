@@ -10,7 +10,7 @@ class EchoBotPacemaker:
 
     async def get_echo_bot(self):
         try:
-            response = await self.Session.get('https://echo-bot-kl81.onrender.com?url=https://aters-server.onrender.com')
+            response = await self.Session.get('https://echo-bot-kl81.onrender.com?url=https://cyclictaskspy.onrender.com')
             print(await response.text())
             await self.send_discord_webhook()
             response.close()
